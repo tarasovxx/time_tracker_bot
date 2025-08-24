@@ -43,7 +43,7 @@ def create_database():
 def test_connection():
     """Тестирование подключения к базе данных"""
     try:
-        from .database import Database
+        from database import Database
         db = Database()
         print("✅ Подключение к базе данных успешно")
         db.close()

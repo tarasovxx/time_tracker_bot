@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Скрипт для запуска Time Tracker Bot локально
+Главный файл для запуска Time Tracker Bot
 """
 
 import asyncio

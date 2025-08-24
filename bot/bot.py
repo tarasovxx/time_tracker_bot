@@ -10,7 +10,7 @@ from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
 from aiogram.types import InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from .database import Database
+from database import Database
 
 # Загружаем переменные окружения
 load_dotenv()
