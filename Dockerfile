@@ -28,4 +28,4 @@ USER bot
 EXPOSE 8000
 
 # Команда запуска
-CMD ["python", "bot_aiogram.py"]
+CMD ["python", "-m", "bot.bot"]
