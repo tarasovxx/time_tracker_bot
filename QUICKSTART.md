@@ -59,6 +59,15 @@ docker-run.bat
 docker-compose up --build -d
 ```
 
+**Локальный запуск (без Docker):**
+```bash
+# Настройка БД
+python setup_db.py
+
+# Запуск бота
+python run_bot.py
+```
+
 ### 6. ✅ Проверка
 
 ```bash

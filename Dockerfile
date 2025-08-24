@@ -10,8 +10,10 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
+# Копируем файлы зависимостей
 COPY pyproject.toml poetry.lock ./
 
+# Устанавливаем Python зависимости
 RUN pip install --timeout=600 --retries=5 --force-reinstall --prefer-binary poetry && \
     poetry config virtualenvs.create false && \
     poetry install --no-interaction --no-ansi --no-root
@@ -28,4 +30,4 @@ USER bot
 EXPOSE 8000
 
 # Команда запуска
-CMD ["python", "-m", "bot.bot"]
+CMD ["python", "bot/bot.py"]
