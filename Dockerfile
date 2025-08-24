@@ -30,4 +30,4 @@ USER bot
 EXPOSE 8000
 
 # Команда запуска
-CMD ["python", "-m", "bot.bot"]
+CMD ["python", "main.py"]
