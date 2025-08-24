@@ -10,11 +10,11 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Копируем файлы зависимостей
-COPY requirements.txt .
+COPY pyproject.toml poetry.lock ./
 
-# Устанавливаем Python зависимости
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --timeout=600 --retries=5 --force-reinstall --prefer-binary poetry && \
+    poetry config virtualenvs.create false && \
+    poetry install --no-interaction --no-ansi --no-root
 
 # Копируем исходный код
 COPY . .
