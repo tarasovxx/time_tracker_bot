@@ -1,0 +1,13 @@
+# Telegram Bot Token
+TELEGRAM_TOKEN=your_telegram_bot_token_here
+
+# PostgreSQL Database
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=time_tracker
+DB_USER=your_username
+DB_PASSWORD=your_password
+
+# Bot Settings
+ADMIN_USER_ID=your_telegram_user_id
+TIMEZONE=Europe/Moscow

@@ -1,0 +1,20 @@
+[project]
+name = "time-tracker-tg-bot"
+version = "0.1.0"
+description = "Bot for traking your days and how many days have you lived. It also sends you a squeeze of how much deepwork you had every day."
+authors = [
+    {name = "Tarasov Artem",email = "almtara550@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "aiogram>=3.0.0",
+    "psycopg2-binary>=2.9.0",
+    "python-dotenv>=1.0.0",
+    "schedule>=1.2.0",
+    "pytz>=2023.3"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
