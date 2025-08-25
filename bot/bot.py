@@ -11,6 +11,7 @@ from aiogram.filters import Command
 from aiogram.types import InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from .database import Database
+from zoneinfo import ZoneInfo
 
 # Загружаем переменные окружения
 load_dotenv()
@@ -25,7 +26,7 @@ logger = logging.getLogger(__name__)
 class TimeTrackerBot:
     def __init__(self):
         self.db = Database()
-        self.timezone = os.getenv('TIMEZONE', 'Europe/Moscow')
+        self.timezone = ZoneInfo(os.getenv('TIMEZONE', 'Europe/Moscow'))
         self.bot = None
         self.dp = None
         
@@ -238,12 +239,14 @@ class TimeTrackerBot:
     async def back_to_main(self, callback: types.CallbackQuery):
         """Возврат к главному меню"""
         keyboard = InlineKeyboardBuilder()
+
         keyboard.add(InlineKeyboardButton(text="🎯 Начать дипворк", callback_data="start_deepwork"))
         keyboard.add(InlineKeyboardButton(text="⏹ Остановить дипворк", callback_data="stop_deepwork"))
-        keyboard.row()
         keyboard.add(InlineKeyboardButton(text="📊 Статистика за сегодня", callback_data="today_stats"))
-        keyboard.add(InlineKeyboardButton(text="🎂 Установить дату рождения", callback_data="set_birthday"))
-        
+
+        # Настройка: 1 кнопка в каждой строке
+        keyboard.adjust(1)
+
         await callback.message.edit_text(
             "🚀 Главное меню Time Tracker Bot\n\n"
             "Выберите действие:",
