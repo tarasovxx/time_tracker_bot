@@ -65,7 +65,7 @@ docker-compose up --build -d
 python setup_db.py
 
 # Запуск бота
-python run_bot.py
+python main.py
 ```
 
 ### 6. ✅ Проверка
