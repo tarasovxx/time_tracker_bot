@@ -56,23 +56,29 @@ class TimeTrackerBot:
         """Синхронная отправка сообщения о днях жизни (для планировщика)"""
         if self.bot:
             asyncio.create_task(self.send_birthday_message())
-    
+
     async def start_command(self, message: types.Message):
         """Обработчик команды /start"""
         keyboard = InlineKeyboardBuilder()
+
         keyboard.add(InlineKeyboardButton(text="🎯 Начать дипворк", callback_data="start_deepwork"))
+        keyboard.row()
+
         keyboard.add(InlineKeyboardButton(text="⏹ Остановить дипворк", callback_data="stop_deepwork"))
         keyboard.row()
+
         keyboard.add(InlineKeyboardButton(text="📊 Статистика за сегодня", callback_data="today_stats"))
+        keyboard.row()
+
         keyboard.add(InlineKeyboardButton(text="🎂 Установить дату рождения", callback_data="set_birthday"))
-        
+
         await message.answer(
             "🚀 Добро пожаловать в Time Tracker Bot!\n\n"
             "Этот бот поможет вам отслеживать время, проведенное в дипворке.\n\n"
             "Выберите действие:",
             reply_markup=keyboard.as_markup()
         )
-    
+
     async def button_callback(self, callback: types.CallbackQuery):
         """Обработчик нажатий на кнопки"""
         await callback.answer()
