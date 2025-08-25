@@ -62,15 +62,12 @@ class TimeTrackerBot:
         keyboard = InlineKeyboardBuilder()
 
         keyboard.add(InlineKeyboardButton(text="🎯 Начать дипворк", callback_data="start_deepwork"))
-        keyboard.row()
-
         keyboard.add(InlineKeyboardButton(text="⏹ Остановить дипворк", callback_data="stop_deepwork"))
-        keyboard.row()
-
         keyboard.add(InlineKeyboardButton(text="📊 Статистика за сегодня", callback_data="today_stats"))
-        keyboard.row()
-
         keyboard.add(InlineKeyboardButton(text="🎂 Установить дату рождения", callback_data="set_birthday"))
+
+        # Настройка: 1 кнопка в каждой строке
+        keyboard.adjust(1)
 
         await message.answer(
             "🚀 Добро пожаловать в Time Tracker Bot!\n\n"
@@ -114,7 +111,7 @@ class TimeTrackerBot:
         session_id = self.db.start_session(user_id)
         if session_id:
             self.active_sessions[user_id] = session_id
-            start_time = datetime.now().strftime("%H:%M")
+            start_time = datetime.now(tz=self.timezone).strftime("%H:%M")
             
             keyboard = InlineKeyboardBuilder()
             keyboard.add(InlineKeyboardButton(text="⏹ Остановить дипворк", callback_data="stop_deepwork"))
