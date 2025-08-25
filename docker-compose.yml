@@ -19,7 +19,7 @@ services:
       - time_tracker_network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U time_tracker_user -d time_tracker"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d time_tracker"]
       interval: 30s
       timeout: 10s
       retries: 3
