@@ -6,8 +6,8 @@ services:
     image: postgres:15-alpine
     container_name: time_tracker_postgres
     environment:
-      POSTGRES_DB: time_tracker
-      POSTGRES_USER: time_tracker_user
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
     volumes:
@@ -31,7 +31,7 @@ services:
     environment:
       - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
       - DB_HOST=postgres
-      - DB_PORT=5432
+      - DB_PORT=${DB_PORT}
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
